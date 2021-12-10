@@ -1,0 +1,13 @@
+<p>categories works!</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Categorie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of categories | async">
+        <td>{{ a.nom }}</td>
+      </tr>
+    </tbody>
+  </table>

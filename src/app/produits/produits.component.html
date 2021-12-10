@@ -1,0 +1,49 @@
+<p>produits works!</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" class="form-check-input" [(ngModel)]="parentSelector" [value]="-1" /></th>
+
+            <th scope="col">Nom</th>
+            <th scope="col">id</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Categorie</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let a of produits | async">
+            <td>
+              <input
+                type="checkbox"
+                class="form-check-input"
+                [checked]="a.select"
+                [value]="a.id"
+                (change)="onCheck($event, a, a.id)"
+                [(ngModel)]="a.select"
+              />
+            </td>
+            <td>{{ a.nom }}</td>
+            <td>{{ a.id }}</td>
+            <td>{{ a.prix }}</td>
+            <td>{{ a.categorie }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm">
+      <div *ngFor="let a of items">
+        <a [routerLink]="['/mesAchats', a.id]">achats</a>
+        {{ a.nom }}
+        {{ a.id }}
+      </div>
+    </div>
+    <div class="col-sm">
+      <button class="btn" id="bt" style="display: none" (click)="addToCart(produit)">acheter</button>
+    </div>
+  </div>
+</div>
+
